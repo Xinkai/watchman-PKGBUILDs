@@ -3,7 +3,7 @@
 
 pkgname=fmt
 pkgver=8.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Open-source formatting library for C++'
 arch=(x86_64)
 url=https://fmt.dev
@@ -20,10 +20,15 @@ makedepends=(
 )
 provides=(libfmt.so)
 _tag=b6f4ceaed0a0a24ccf575fab6c56dd50ccf6f1a9
-source=(git+https://github.com/fmtlib/fmt.git#tag=${_tag})
-b2sums=(SKIP)
+source=(
+  git+https://github.com/fmtlib/fmt.git#tag=${_tag}
+  8f8a1a02d5c5cb967d240feee3ffac00d66f22a2.diff
+)
+b2sums=('SKIP'
+        'cff0976eb0bd89a692e39112dc3f594d4ab5723a54d688c27bcd9619014ad0cf14c2440756d7d1d2bbe8425ec05f93818cf52282c38850f652ba6161de773921')
 
 prepare() {
+  patch --directory="$pkgname" --forward --strip=1 --input="../8f8a1a02d5c5cb967d240feee3ffac00d66f22a2.diff"
   npm install less less-plugin-clean-css
   sed "s/'lessc',/'npx', 'lessc',/" -i fmt/doc/build.py
 }
