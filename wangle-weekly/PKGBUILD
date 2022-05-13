@@ -1,0 +1,32 @@
+# Maintainer: Xinkai Chen <xinkai.chen@qq.com>
+
+_pkgname=wangle
+pkgname=${_pkgname}-weekly
+pkgver=2022.05.09.00
+pkgrel=1
+pkgdesc="C++ networking library providing client/server abstractions for building services"
+arch=("x86_64")
+url="https://github.com/facebook/wangle"
+license=("Apache")
+depends=("fizz-weekly" "folly-weekly")
+makedepends=("cmake" "gmock")
+conflicts=("wangle")
+provides=("wangle")
+source=("${url}/archive/v${pkgver}.tar.gz")
+b2sums=("9a85485a6f0a896d20c8cc9ecc0ede97b779ef052f4f7984e7c61ea6c066e96041126013ea7b2f44f7a927bed9b5d4ec5897cc4a4e7b131ef84839d1f04b057d")
+options=(!lto)
+
+build() {
+    cd "$_pkgname-$pkgver/$_pkgname"
+    cmake -S . -B build \
+          -DCMAKE_INSTALL_PREFIX=/usr \
+          -DCMAKE_BUILD_TYPE=Release
+    cmake --build build
+}
+
+package() {
+    cd "$_pkgname-$pkgver"
+    cmake --build "$_pkgname/build" --target install -- DESTDIR="$pkgdir/"
+
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}

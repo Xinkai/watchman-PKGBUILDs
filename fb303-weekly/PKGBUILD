@@ -1,0 +1,32 @@
+# Maintainer: Xinkai Chen <xinkai.chen@qq.com>
+
+_pkgname=fb303
+pkgname=${_pkgname}-weekly
+pkgver=2022.05.09.00
+pkgrel=1
+pkgdesc="Facebook's branch of Apache Thrift, including a new C++ server."
+arch=("x86_64")
+url="https://github.com/facebook/fb303"
+license=("Apache")
+depends=("folly-weekly" "fizz-weekly" "wangle-weekly" "fbthrift-weekly")
+makedepends=("cmake" "gtest" "gmock")
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+b2sums=("869ddb88e925490f2dd3f8f594c79066fdf37567c3f1b05b0a8f35a73ee80206373dc38378f96984e3fde499096fb58d921b4cf2045d61c2ed9a1b4582190322")
+options=(!lto)
+
+build() {
+    cd "$_pkgname-$pkgver"
+
+    cmake -S . -B build \
+          -DCMAKE_INSTALL_PREFIX=/usr \
+          -DPYTHON_EXTENSIONS=OFF \
+          -DCMAKE_BUILD_TYPE=Release
+    cmake --build build
+}
+
+package() {
+    cd "$_pkgname-$pkgver"
+    cmake --build build --target install -- DESTDIR="$pkgdir/"
+
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}

@@ -1,0 +1,79 @@
+# Maintainer: Xinkai Chen <xinkai.chen@qq.com>
+
+_pkgname=watchman
+pkgname=${_pkgname}-weekly
+pkgver=2022.05.09.00
+pkgrel=1
+pkgdesc="Watches files and records, or triggers actions, when they change."
+arch=("x86_64")
+url="https://github.com/facebook/watchman"
+license=("Apache")
+depends=("folly-weekly" "fizz-weekly" "wangle-weekly" "fbthrift-weekly" "fb303-weekly")
+makedepends=("cmake" "gtest" "gmock" "cpptoml>=0.1.1-3" "python" "rust")
+conflicts=("watchman" "watchman-git" "watchman-bin" "python-watchman")
+provides=("watchman" "watchman-git" "watchman-bin" "python-watchman")
+source=(
+    "${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "https://src.fedoraproject.org/rpms/watchman/raw/a446ccc61c73d74053792656c3832f93bf0fe262/f/watchman-destdir.patch"
+)
+b2sums=("e11444b055c0b378ea920228c7d163ebf7932c8b2a0c76f42d2868ce8d448ac306ea9a7382e39465107168c0d99c10c84e475eaf6b8600384c1c0a75cafe6974"
+        "1b1d61640c5544b3b615090c2d5f9cf1c99b101eceffde8bb622b5ab4bdb9c37fbfcf779055407ad3da26c1be58a6b973fbff9583b35cc8a71164a0486801b06")
+
+prepare() {
+    patch --directory="$_pkgname-$pkgver" --ignore-whitespace --fuzz=3 --input="../watchman-destdir.patch"
+}
+
+build() {
+    cd "$_pkgname-$pkgver"
+    cmake -S . -B build \
+          -DCMAKE_INSTALL_PREFIX=/usr \
+          -DWATCHMAN_STATE_DIR=/var/run/watchman \
+          -DUSE_SYS_PYTHON=ON \
+          -DWATCHMAN_VERSION_OVERRIDE="${pkgver}" \
+          -DCMAKE_BUILD_TYPE=Release
+    cmake --build build
+}
+
+package() {
+    cd "$_pkgname-$pkgver"
+
+    cmake --build build --target install -- DESTDIR="$pkgdir"
+
+    install -Dm644 /dev/stdin "$pkgdir/usr/lib/tmpfiles.d/watchman.conf" <<END
+d /run/watchman 1777 root root
+END
+
+    echo "{}" | install -Dm644 /dev/stdin "$pkgdir/etc/watchman.json.default"
+
+    install -Dm644 /dev/stdin "$pkgdir/usr/lib/systemd/user/watchman.socket" <<END
+[Unit]
+Description=File watching service socket
+Documentation=$url
+
+[Socket]
+ListenStream=/run/watchman/%u-state/sock
+SocketMode=0600
+DirectoryMode=0700
+
+[Install]
+WantedBy=sockets.target
+END
+
+    install -Dm644 /dev/stdin "$pkgdir/usr/lib/systemd/user/watchman.service" <<END
+[Unit]
+Description=File watching service
+Documentation=$url
+Requires=watchman.socket
+
+[Service]
+ExecStart=/usr/bin/watchman --foreground --inetd --logfile=-
+StandardInput=socket
+StandardOutput=journal
+StandardError=inherit
+
+[Install]
+WantedBy=default.target
+END
+
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
