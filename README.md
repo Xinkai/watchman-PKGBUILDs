@@ -3,7 +3,7 @@ Building watchman with GCC 12 on Arch Linux
 
 Custom repo
 -----------
-Note: These binary packages are built with `-mtune=native` on a Ryzen 3950X.
+Note: These binary packages are built with `-march=x86-64-v3`.
 
 https://la2.cuoan.net/cuoan.repo
 
