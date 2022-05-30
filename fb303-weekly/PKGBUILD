@@ -2,7 +2,7 @@
 
 _pkgname=fb303
 pkgname=${_pkgname}-weekly
-pkgver=2022.05.23.00
+pkgver=2022.05.30.00
 pkgrel=1
 pkgdesc="Facebook's branch of Apache Thrift, including a new C++ server."
 arch=("x86_64")
