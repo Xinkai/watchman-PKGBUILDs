@@ -3,7 +3,7 @@
 _pkgname=wangle
 pkgname=${_pkgname}-weekly
 pkgver=2022.06.13.00
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ networking library providing client/server abstractions for building services"
 arch=("x86_64")
 url="https://github.com/facebook/wangle"
