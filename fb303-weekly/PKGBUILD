@@ -2,8 +2,8 @@
 
 _pkgname=fb303
 pkgname=${_pkgname}-weekly
-pkgver=2022.06.13.00
-pkgrel=2
+pkgver=2022.06.27.00
+pkgrel=1
 pkgdesc="Facebook's branch of Apache Thrift, including a new C++ server."
 arch=("x86_64")
 url="https://github.com/facebook/fb303"
