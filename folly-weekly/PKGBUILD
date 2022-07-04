@@ -5,7 +5,7 @@
 
 _pkgname=folly
 pkgname=${_pkgname}-weekly
-pkgver=2022.06.27.00
+pkgver=2022.07.04.00
 pkgrel=1
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=("x86_64")
@@ -14,7 +14,7 @@ license=("Apache")
 depends=("snappy" "jemalloc" "double-conversion" "gflags" "google-glog" "libevent" "boost>=1.79.0"
          "boost-libs" "fmt>=8.1.1-3" "openssl" "zlib" "bzip2" "xz" "lz4" "zstd" "libsodium"
          "libdwarf" "libaio" "liburing" "libunwind")
-makedepends=("cmake" "gtest" "gmock" "clang")
+makedepends=("cmake" "gtest" "gmock" "clang13")
 conflicts=("folly")
 provides=("folly")
 source=("$url/archive/v${pkgver}.tar.gz")
@@ -24,8 +24,8 @@ options=(!lto)
 build() {
   cd "$_pkgname-$pkgver"
   ASMFLAGS="${CFLAGS}" cmake \
-    -DCMAKE_C_COMPILER=clang \
-    -DCMAKE_CXX_COMPILER=clang++ \
+    -DCMAKE_C_COMPILER=/usr/lib/llvm13/bin/clang \
+    -DCMAKE_CXX_COMPILER=/usr/lib/llvm13/bin/clang++ \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_LIBRARY_ARCHITECTURE=x86_64 \
     -DBUILD_TESTS=ON \
