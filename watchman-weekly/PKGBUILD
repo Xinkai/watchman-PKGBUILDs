@@ -3,13 +3,14 @@
 _pkgname=watchman
 pkgname=${_pkgname}-weekly
 pkgver=2022.07.04.00
-pkgrel=1
+pkgrel=2
 pkgdesc="Watches files and records, or triggers actions, when they change."
 arch=("x86_64")
 url="https://github.com/facebook/watchman"
 license=("Apache")
-depends=("folly-weekly" "fizz-weekly" "wangle-weekly" "fbthrift-weekly" "fb303-weekly")
-makedepends=("cmake" "gtest" "gmock" "cpptoml>=0.1.1-3" "python" "rust")
+makedepends=("cmake" "gtest" "gmock" "cpptoml>=0.1.1-3" "python" "rust"
+    "folly-weekly" "fizz-weekly" "wangle-weekly" "fbthrift-weekly" "fb303-weekly"
+)
 conflicts=("watchman" "watchman-git" "watchman-bin" "python-watchman")
 provides=("watchman" "watchman-git" "watchman-bin" "python-watchman")
 source=(
