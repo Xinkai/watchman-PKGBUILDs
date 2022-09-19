@@ -1,5 +1,5 @@
-# watchman-gcc-12-PKGBUILDs
-Building watchman with GCC 12 on Arch Linux
+# watchman-PKGBUILDs
+PKGBUILDs for building watchman on Arch Linux
 
 Custom repo
 -----------
