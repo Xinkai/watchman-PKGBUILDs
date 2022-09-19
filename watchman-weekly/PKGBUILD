@@ -2,14 +2,14 @@
 
 _pkgname=watchman
 pkgname=${_pkgname}-weekly
-pkgver=2022.07.04.00
-pkgrel=2
+pkgver=2022.09.19.00
+pkgrel=1
 pkgdesc="Watches files and records, or triggers actions, when they change."
 arch=("x86_64")
 url="https://github.com/facebook/watchman"
 license=("Apache")
 makedepends=("cmake" "gtest" "gmock" "cpptoml>=0.1.1-3" "python" "rust"
-    "folly-weekly" "fizz-weekly" "wangle-weekly" "fbthrift-weekly" "fb303-weekly"
+    "folly-weekly" "fizz-weekly" "wangle-weekly" "fbthrift-weekly" "fb303-weekly" "edencommon-weekly"
 )
 conflicts=("watchman" "watchman-git" "watchman-bin" "python-watchman")
 provides=("watchman" "watchman-git" "watchman-bin" "python-watchman")
@@ -17,8 +17,8 @@ source=(
     "${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "https://src.fedoraproject.org/rpms/watchman/raw/a446ccc61c73d74053792656c3832f93bf0fe262/f/watchman-destdir.patch"
 )
-b2sums=("e11444b055c0b378ea920228c7d163ebf7932c8b2a0c76f42d2868ce8d448ac306ea9a7382e39465107168c0d99c10c84e475eaf6b8600384c1c0a75cafe6974"
-        "1b1d61640c5544b3b615090c2d5f9cf1c99b101eceffde8bb622b5ab4bdb9c37fbfcf779055407ad3da26c1be58a6b973fbff9583b35cc8a71164a0486801b06")
+b2sums=('dbbacc207dec712b1d0673ff65424a6103ade1648c09f1310e25d7437a69304953f2aa539da3fc2b16f6920015ef8049354c08c1718e930d7ec0e4d58e6c01eb'
+        '1b1d61640c5544b3b615090c2d5f9cf1c99b101eceffde8bb622b5ab4bdb9c37fbfcf779055407ad3da26c1be58a6b973fbff9583b35cc8a71164a0486801b06')
 
 prepare() {
     patch --directory="$_pkgname-$pkgver" --ignore-whitespace --fuzz=3 --input="../watchman-destdir.patch"
@@ -31,6 +31,7 @@ build() {
           -DWATCHMAN_STATE_DIR=/var/run/watchman \
           -DUSE_SYS_PYTHON=ON \
           -DWATCHMAN_VERSION_OVERRIDE="${pkgver}" \
+          -DENABLE_EDEN_SUPPORT=OFF \
           -DCMAKE_BUILD_TYPE=Release
     cmake --build build
 }
