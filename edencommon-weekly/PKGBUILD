@@ -1,0 +1,32 @@
+# Maintainer: Xinkai Chen <xinkai.chen@qq.com>
+
+_pkgname=edencommon
+pkgname=${_pkgname}-weekly
+pkgver=2022.09.19.00
+pkgrel=1
+pkgdesc="A shared library for Meta's source control filesystem tools (EdenFS and Watchman)"
+arch=("x86_64")
+url="https://github.com/facebookexperimental/edencommon"
+license=("Apache")
+depends=("fbthrift-weekly")
+makedepends=("cmake" "gmock")
+conflicts=("edencommon")
+provides=("edencommon")
+source=("${url}/archive/v${pkgver}.tar.gz")
+b2sums=('2bc1b0600d2c6d67bf0c1708d5706db4ae474c8c048057e1606bd366616d8f08295b1491b64db550055a60458004a1868ad852d1c99e73174776a4db40fb9831')
+options=(!lto)
+
+build() {
+    cd "$_pkgname-$pkgver"
+    cmake -S . -B build \
+          -DCMAKE_INSTALL_PREFIX=/usr \
+          -DCMAKE_BUILD_TYPE=Release
+    cmake --build build
+}
+
+package() {
+    cd "$_pkgname-$pkgver"
+    cmake --build build --target install -- DESTDIR="$pkgdir/"
+
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
