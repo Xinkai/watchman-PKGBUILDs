@@ -4,7 +4,7 @@
 
 _pkgname=fizz
 pkgname=${_pkgname}-weekly
-pkgver=2022.09.26.00
+pkgver=2022.10.03.00
 pkgrel=1
 pkgdesc="C++14 implementation of the TLS-1.3 standard"
 arch=("x86_64")
@@ -15,7 +15,7 @@ provides=("fizz")
 depends=("folly-weekly")
 makedepends=("cmake" "gtest" "gmock")
 source=("${url}/archive/v${pkgver}.tar.gz")
-b2sums=('0b4742c63ca77fd909257af02f9f057b1f571ef56f7f81a1c01432e8e5ea729580d565a4b1bc0437244140a19ae770c6167be2b66b72b29d7dce94fbdaa3f339')
+b2sums=('3bdb69419bfbe18d492c1c24e063bf5c842aff3176d49170d07681d02601a23e617ccfe3715819ea9752890d806ca1e47704dcf8a790387db58d49356a453e15')
 options=(!lto)
 
 build() {

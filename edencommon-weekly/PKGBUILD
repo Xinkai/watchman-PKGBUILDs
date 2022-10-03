@@ -2,7 +2,7 @@
 
 _pkgname=edencommon
 pkgname=${_pkgname}-weekly
-pkgver=2022.09.26.00
+pkgver=2022.10.03.00
 pkgrel=1
 pkgdesc="A shared library for Meta's source control filesystem tools (EdenFS and Watchman)"
 arch=("x86_64")
@@ -13,7 +13,7 @@ makedepends=("cmake" "gmock")
 conflicts=("edencommon")
 provides=("edencommon")
 source=("${url}/archive/v${pkgver}.tar.gz")
-b2sums=('5de900745ffd76348c73b224f3bf0aa48ae335e1f630ebf83935d2ceb06218130941ca89ddfe7c269095242ce0eead7e72dece019539048bc7bdace40ccb46c5')
+b2sums=('2f7d60724378abc4d22f599ec1d049d94411952c8af5ec376a3073cc067214b789b6e6c99a6dac122d203f199134773702f03f33fd35f2e3c63773dc7976b859')
 options=(!lto)
 
 build() {
