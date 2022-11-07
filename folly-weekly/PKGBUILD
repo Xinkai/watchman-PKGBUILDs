@@ -6,13 +6,13 @@
 _pkgname=folly
 pkgname=${_pkgname}-weekly
 pkgver=2022.10.31.00
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=("x86_64")
 url="https://github.com/facebook/folly"
 license=("Apache")
 depends=("snappy" "jemalloc" "double-conversion" "gflags" "google-glog" "libevent" "boost>=1.79.0"
-         "boost-libs" "fmt" "openssl" "zlib" "bzip2" "xz" "lz4" "zstd" "libsodium"
+         "boost-libs" "fmt" "openssl>=3.0" "zlib" "bzip2" "xz" "lz4" "zstd" "libsodium"
          "libdwarf" "libaio" "liburing" "libunwind")
 makedepends=("cmake" "gtest" "gmock" "clang")
 conflicts=("folly")

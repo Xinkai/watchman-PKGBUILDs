@@ -3,12 +3,12 @@
 _pkgname=watchman
 pkgname=${_pkgname}-weekly
 pkgver=2022.10.31.00
-pkgrel=1
+pkgrel=2
 pkgdesc="Watches files and records, or triggers actions, when they change."
 arch=("x86_64")
 url="https://github.com/facebook/watchman"
 license=("Apache")
-depends=("google-glog" "boost-libs" "fmt" "double-conversion" "libunwind")
+depends=("google-glog" "boost-libs" "fmt" "double-conversion" "libunwind" "openssl>=3.0")
 makedepends=("cmake" "gtest" "gmock" "cpptoml" "python" "rust"
     "folly-weekly" "fizz-weekly" "wangle-weekly" "fbthrift-weekly" "fb303-weekly" "edencommon-weekly"
 )

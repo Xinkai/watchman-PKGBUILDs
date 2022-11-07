@@ -1,12 +1,6 @@
 # watchman-PKGBUILDs
 PKGBUILDs for building watchman on Arch Linux
 
-Custom repo
------------
-Note: These binary packages are built with `-march=x86-64-v3`.
-
-https://la2.cuoan.net/cuoan.repo
-
 
 Credits
 -------
