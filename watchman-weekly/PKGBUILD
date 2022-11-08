@@ -2,8 +2,8 @@
 
 _pkgname=watchman
 pkgname=${_pkgname}-weekly
-pkgver=2022.10.31.00
-pkgrel=2
+pkgver=2022.11.07.00
+pkgrel=1
 pkgdesc="Watches files and records, or triggers actions, when they change."
 arch=("x86_64")
 url="https://github.com/facebook/watchman"
@@ -18,7 +18,7 @@ source=(
     "${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "https://src.fedoraproject.org/rpms/watchman/raw/a446ccc61c73d74053792656c3832f93bf0fe262/f/watchman-destdir.patch"
 )
-b2sums=('840637c6f49444c3655e07dbea7d1dd4f50c5d0ac38d272de581382415b4f46afb7e87b9e26912f6e1a5a344a16fc0b6d688ed15a116b7340f789b6bc8ac6abc'
+b2sums=('6d1bced0033c80cd080f755e62181259af79259fdea104f61b5e802f58a8fa639e69f2b64ccf2e0f73981a5d8e5e7e258e78cb3fb7d2a4d6e61d9dd80642b699'
         '1b1d61640c5544b3b615090c2d5f9cf1c99b101eceffde8bb622b5ab4bdb9c37fbfcf779055407ad3da26c1be58a6b973fbff9583b35cc8a71164a0486801b06')
 
 prepare() {
