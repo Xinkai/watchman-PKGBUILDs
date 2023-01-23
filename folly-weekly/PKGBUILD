@@ -5,20 +5,20 @@
 
 _pkgname=folly
 pkgname=${_pkgname}-weekly
-pkgver=2022.11.07.00
+pkgver=2023.01.23.00
 pkgrel=1
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=("x86_64")
 url="https://github.com/facebook/folly"
 license=("Apache")
-depends=("snappy" "jemalloc" "double-conversion" "gflags" "google-glog" "libevent" "boost>=1.79.0"
-         "boost-libs" "fmt" "openssl>=3.0" "zlib" "bzip2" "xz" "lz4" "zstd" "libsodium"
+depends=("snappy" "jemalloc" "double-conversion" "gflags" "google-glog" "libevent"
+         "boost-libs=1.81.0" "fmt" "openssl>=3.0" "zlib" "bzip2" "xz" "lz4" "zstd" "libsodium"
          "libdwarf" "libaio" "liburing" "libunwind")
-makedepends=("cmake" "gtest" "gmock" "clang")
+makedepends=("boost=1.81.0" "cmake" "gtest" "gmock" "clang")
 conflicts=("folly")
 provides=("folly")
 source=("$url/archive/v${pkgver}.tar.gz")
-b2sums=('383c90913037465e221d4c4c5deb7109cc1fd06a827f43073e301fa0954ee668b1611cf47181d01b01972a7c7489d3f4bcfd79e8c5ce5de62594f9d3f7c9e326')
+b2sums=('ad514ef51b96d075b78b3360192e93415e576d3a1af9707dca19b4fe23e4fd27a172862674148f07fad1d8e47deeaa926fe65312ec342afdd5d95e1449a672e0')
 options=(!lto)
 
 build() {
