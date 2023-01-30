@@ -5,7 +5,7 @@
 
 _pkgname=folly
 pkgname=${_pkgname}-weekly
-pkgver=2023.01.23.00
+pkgver=2023.01.30.00
 pkgrel=1
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=("x86_64")
@@ -18,7 +18,7 @@ makedepends=("boost=1.81.0" "cmake" "gtest" "gmock" "clang")
 conflicts=("folly")
 provides=("folly")
 source=("$url/archive/v${pkgver}.tar.gz")
-b2sums=('ad514ef51b96d075b78b3360192e93415e576d3a1af9707dca19b4fe23e4fd27a172862674148f07fad1d8e47deeaa926fe65312ec342afdd5d95e1449a672e0')
+b2sums=('eae151c10434dd89a82a153177aff51c908c36e8375142cc18e13d33fc303407f18f388a20e7aa32e68047d4ccb801ad9ed2f46c49637209837e24f38c2311fd')
 options=(!lto)
 
 build() {
