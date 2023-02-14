@@ -2,7 +2,7 @@
 
 _pkgname=watchman
 pkgname=${_pkgname}-weekly
-pkgver=2023.02.06.00
+pkgver=2023.02.13.00
 pkgrel=1
 pkgdesc="Watches files and records, or triggers actions, when they change."
 arch=("x86_64")
@@ -18,7 +18,7 @@ source=(
     "${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "https://src.fedoraproject.org/rpms/watchman/raw/a446ccc61c73d74053792656c3832f93bf0fe262/f/watchman-destdir.patch"
 )
-b2sums=('9a7ef8b809855bd08bf7a75441a6399ed4fd852e40f749391d4f1377ad095e7f2d58800e9c44f058723751fa51fdd8ff88122276d1af6d3128344cd48457eba7'
+b2sums=('9dca28b0c29a0a3b2baea1d9c89c336d46c08e3edbc8f690903108f20ec6b7bf666387553023c30fbaf6e0d93518b41703584bef31f06ecbc3345469521c1885'
         '1b1d61640c5544b3b615090c2d5f9cf1c99b101eceffde8bb622b5ab4bdb9c37fbfcf779055407ad3da26c1be58a6b973fbff9583b35cc8a71164a0486801b06')
 
 prepare() {

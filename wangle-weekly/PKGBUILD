@@ -2,7 +2,7 @@
 
 _pkgname=wangle
 pkgname=${_pkgname}-weekly
-pkgver=2023.02.06.00
+pkgver=2023.02.13.00
 pkgrel=1
 pkgdesc="C++ networking library providing client/server abstractions for building services"
 arch=("x86_64")
@@ -13,7 +13,7 @@ makedepends=("boost=1.81.0" "cmake" "gmock")
 conflicts=("wangle")
 provides=("wangle")
 source=("${url}/archive/v${pkgver}.tar.gz")
-b2sums=('a1b1d50083bac9de7ea6bf586cd677d44a3baf5fcec0ac92d82cda16fcfad055b1e91fec2fa75143ab1ee488bc638a0d6153d19b65b30fc63829fdfdfd0c3156')
+b2sums=('72e90c1f97048c0c173642ec253c9108de87b7c621ce55e872bc787526efb34b88e3ccb930331f6442ae28991849e0dacd317f681869d344d4b444acaa53f2ef')
 options=(!lto)
 
 build() {
