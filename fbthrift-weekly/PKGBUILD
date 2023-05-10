@@ -2,7 +2,7 @@
 
 _pkgname=fbthrift
 pkgname=${_pkgname}-weekly
-pkgver=2023.05.01.00
+pkgver=2023.05.08.00
 pkgrel=1
 pkgdesc="Facebook's branch of Apache Thrift, including a new C++ server."
 arch=("x86_64")
@@ -15,7 +15,7 @@ depends=(
 )
 makedepends=("boost=1.81.0" "cmake" "gmock")
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('8fa8a4413bab58a35a76f0f85ddb6ab6c325ae705d7917f9d509ec2b1ff04b98b695dfed47f1d3e46346406ee139f7f5e2f9c36c1eba970aa84c1331f9ae41d7')
+b2sums=('7dd5da4b5a8ff7c6d8cd0b8eef143e894af58ff939f6fcb8cbe5e6f8ef9e9119aeb023c696c32af5cb85d8b4ef349b9fdc526ebe3c9748271b7301a1e1c7ab01')
 options=(!lto)
 
 build() {
