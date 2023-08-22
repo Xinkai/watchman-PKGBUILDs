@@ -2,13 +2,13 @@
 
 _pkgname=watchman
 pkgname=${_pkgname}-weekly
-pkgver=2023.05.08.00
+pkgver=2023.08.14.00
 pkgrel=1
 pkgdesc="Watches files and records, or triggers actions, when they change."
 arch=("x86_64")
 url="https://github.com/facebook/watchman"
 license=("Apache")
-depends=("google-glog" "boost-libs=1.81.0" "fmt" "double-conversion" "libunwind" "openssl>=3.0")
+depends=("google-glog" "boost-libs=1.81.0" "fmt9" "double-conversion" "libunwind" "openssl>=3.0")
 makedepends=("boost=1.81.0" "cmake" "gtest" "gmock" "cpptoml" "python" "rust"
     "folly-weekly" "fizz-weekly" "wangle-weekly" "fbthrift-weekly" "fb303-weekly" "edencommon-weekly"
 )
@@ -18,7 +18,7 @@ source=(
     "${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "https://src.fedoraproject.org/rpms/watchman/raw/a446ccc61c73d74053792656c3832f93bf0fe262/f/watchman-destdir.patch"
 )
-b2sums=('f8bfe1b06f7183bf113f7398b47206df6ae1068ba56aa0adb1cd81555accc6f167f4d3efbe6b369a01cd94cd38c4a56d98711ad93a21d7397ff89358214ac804'
+b2sums=('c21fddb44238521c0bb855ed988024dc082d271ba53d5045f00406f74dfbe086e00ed33ec909306c1c5de049be74a5a3d981a9fba30637f315419414ec71831f'
         '1b1d61640c5544b3b615090c2d5f9cf1c99b101eceffde8bb622b5ab4bdb9c37fbfcf779055407ad3da26c1be58a6b973fbff9583b35cc8a71164a0486801b06')
 
 prepare() {
