@@ -2,25 +2,23 @@
 
 _pkgname=mvfst
 pkgname=${_pkgname}-weekly
-pkgver=2023.08.14.00
-pkgrel=1
+pkgver=2023.08.28.00
+pkgrel=2
 pkgdesc="An implementation of the QUIC transport protocol."
 arch=("x86_64")
 url="https://github.com/facebook/mvfst"
 license=("Apache")
 depends=("folly-weekly" "fizz-weekly")
-makedepends=("boost=1.81.0" "cmake" "clang")
+makedepends=("boost=1.83.0" "cmake")
 conflicts=("mvfst")
 provides=("mvfst")
 source=("$url/archive/v${pkgver}.tar.gz")
-b2sums=('5329d1d875af96a33f77dc49b745cae12c839da4e082319d9855b64a14e48c8fbd2eafbdb21c6fb0db69a9a7105a8556f1d9654c6725bb1ee438f4a8665a4350')
+b2sums=('a3abe9b9b6623a6b8bbf5ccb092f54d56114c9b708b45932753235cae6ceb354899740bb7b9e563966e4c9c2c9b2c3b3ef090e41f7019329d06aaee3a601a3aa')
 options=(!lto)
 
 build() {
   cd "$_pkgname-$pkgver"
   cmake \
-    -DCMAKE_C_COMPILER=/usr/bin/clang \
-    -DCMAKE_CXX_COMPILER=/usr/bin/clang++ \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_LIBRARY_ARCHITECTURE=x86_64_v3 \
     -DBUILD_TESTS=OFF \

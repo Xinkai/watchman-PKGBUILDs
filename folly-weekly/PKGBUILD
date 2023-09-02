@@ -5,27 +5,25 @@
 
 _pkgname=folly
 pkgname=${_pkgname}-weekly
-pkgver=2023.08.14.00
-pkgrel=1
+pkgver=2023.08.28.00
+pkgrel=2
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=("x86_64")
 url="https://github.com/facebook/folly"
 license=("Apache")
 depends=("snappy" "jemalloc" "double-conversion" "gflags" "google-glog" "libevent"
-         "boost-libs=1.81.0" "fmt9" "openssl>=3.0" "zlib" "bzip2" "xz" "lz4" "zstd" "libsodium"
+         "boost-libs=1.83.0" "fmt9" "openssl>=3.0" "zlib" "bzip2" "xz" "lz4" "zstd" "libsodium"
          "libdwarf" "libaio" "liburing" "libunwind")
-makedepends=("boost=1.81.0" "cmake" "gtest" "gmock" "clang")
+makedepends=("boost=1.83.0" "cmake" "gtest" "gmock")
 conflicts=("folly")
 provides=("folly")
 source=("$url/archive/v${pkgver}.tar.gz")
-b2sums=('8df644c347581ee9a51bf52d5fdab9db8c948131531ece41b1ac73316d0c822fda212fed09edfdc3b26247f217cc3381a14186fcd85c06a5f2462015d5d877a9')
+b2sums=('855c305d1b0fc37a90f4c0f8a03330904fc8b32099c9a1df08b616665bf4ed3a335206c4278b756f7633e201ec99803f031fba5c0cc09320cd37b98624ad6c89')
 options=(!lto)
 
 build() {
   cd "$_pkgname-$pkgver"
   cmake \
-    -DCMAKE_C_COMPILER=/usr/bin/clang \
-    -DCMAKE_CXX_COMPILER=/usr/bin/clang++ \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_LIBRARY_ARCHITECTURE=x86_64_v3 \
     -DBUILD_TESTS=OFF \

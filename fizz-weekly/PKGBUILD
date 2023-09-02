@@ -4,8 +4,8 @@
 
 _pkgname=fizz
 pkgname=${_pkgname}-weekly
-pkgver=2023.08.14.00
-pkgrel=1
+pkgver=2023.08.28.00
+pkgrel=2
 pkgdesc="C++14 implementation of the TLS-1.3 standard"
 arch=("x86_64")
 url="https://github.com/facebookincubator/fizz"
@@ -13,9 +13,9 @@ license=("BSD")
 conflicts=("fizz")
 provides=("fizz")
 depends=("folly-weekly")
-makedepends=("boost=1.81.0" "cmake" "gtest" "gmock")
+makedepends=("boost=1.83.0" "cmake" "gtest" "gmock")
 source=("${url}/archive/v${pkgver}.tar.gz")
-b2sums=('be46cdc63abdb3272f3a51ea7188199fa9a367b9fada0820c56ed78b7dfa8a259667026d1939b466bb2698b62a4b23ff4d58c4409e884ccc32ceda817c25b452')
+b2sums=('7aa8020105c5e1e4fcc99aa54fe6437dd67527f3e93d4f2af6025cbfa9d5a6402de9b073bd2118e5ae6eba1c832b665d4e4b25c16d2ec668f0ea26d92660a88c')
 options=(!lto)
 
 build() {
