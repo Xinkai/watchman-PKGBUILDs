@@ -5,20 +5,20 @@
 
 _pkgname=folly
 pkgname=${_pkgname}-weekly
-pkgver=2023.08.28.00
-pkgrel=2
+pkgver=2023.12.04.00
+pkgrel=1
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=("x86_64")
 url="https://github.com/facebook/folly"
 license=("Apache")
 depends=("snappy" "jemalloc" "double-conversion" "gflags" "google-glog" "libevent"
-         "boost-libs=1.83.0" "fmt9" "openssl>=3.0" "zlib" "bzip2" "xz" "lz4" "zstd" "libsodium"
+         "boost-libs=1.83.0" "fmt" "openssl>=3.0" "zlib" "bzip2" "xz" "lz4" "zstd" "libsodium"
          "libdwarf" "libaio" "liburing" "libunwind")
 makedepends=("boost=1.83.0" "cmake" "gtest" "gmock")
 conflicts=("folly")
 provides=("folly")
 source=("$url/archive/v${pkgver}.tar.gz")
-b2sums=('855c305d1b0fc37a90f4c0f8a03330904fc8b32099c9a1df08b616665bf4ed3a335206c4278b756f7633e201ec99803f031fba5c0cc09320cd37b98624ad6c89')
+b2sums=('ec150f30975018118b250d95cad8d1124b715f2cf1c525ddab20f0f3bda4cb8af96f86cd666d0e8763a43018d3384819e4b2df930e8b7758135573bb17ed2006')
 options=(!lto)
 
 build() {
