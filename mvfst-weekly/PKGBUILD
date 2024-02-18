@@ -2,7 +2,7 @@
 
 _pkgname=mvfst
 pkgname=${_pkgname}-weekly
-pkgver=2023.12.11.00
+pkgver=2024.02.12.00
 pkgrel=1
 pkgdesc="An implementation of the QUIC transport protocol."
 arch=("x86_64")
@@ -13,7 +13,7 @@ makedepends=("boost=1.83.0" "cmake")
 conflicts=("mvfst")
 provides=("mvfst")
 source=("$url/archive/v${pkgver}.tar.gz")
-b2sums=('b83ab314968ac8aaf452743a2670437fd8905aedad09d8c222f01e1a5092a0302694b98bd0c776a837c69b3f9b796b52cfae8ed01402e5f7bcda13b993e3056a')
+b2sums=('a34ef3333c6c83f4c4cfe03fccaaf60cd09ecacea9e92f9cbd216a1e06d5701f1235b5210e22c925eb3124e10d21a0ebba89353ca2526dcccd3eca8bcfc72cae')
 options=(!lto)
 
 build() {
