@@ -6,7 +6,7 @@
 _pkgname=folly
 pkgname=${_pkgname}-weekly
 pkgver=2024.02.12.00
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=("x86_64")
 url="https://github.com/facebook/folly"
