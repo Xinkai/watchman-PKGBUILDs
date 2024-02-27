@@ -1,0 +1,10 @@
+--- CMakeLists.txt.orig	2024-02-27 19:40:47.578962914 +0800
++++ CMakeLists.txt	2024-02-27 19:41:23.617843700 +0800
+@@ -31,6 +31,7 @@
+   MESSAGE(STATUS "other platform: ${CMAKE_SYSTEM_NAME}")
+ ENDIF (CMAKE_SYSTEM_NAME MATCHES "Linux")
+
++add_compile_definitions(GLOG_USE_GLOG_EXPORT)
+ 
+ if (POLICY CMP0054)
+   cmake_policy(SET CMP0054 NEW)

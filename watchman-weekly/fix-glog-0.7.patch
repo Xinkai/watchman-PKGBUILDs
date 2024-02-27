@@ -1,0 +1,10 @@
+--- ./CMakeLists.txt.orig	2024-02-27 20:46:04.701174505 +0800
++++ ./CMakeLists.txt	2024-02-27 20:46:14.632168978 +0800
+@@ -324,6 +324,7 @@
+ include_directories(SYSTEM ${GFLAGS_INCLUDE_DIR})
+ 
+ find_package(Glog REQUIRED)
++add_compile_definitions(GLOG_USE_GLOG_EXPORT)
+ add_compile_definitions(GLOG_NO_ABBREVIATED_SEVERITIES)
+ 
+ # We indirectly depend on boost.  This logic needs to match

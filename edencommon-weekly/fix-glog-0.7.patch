@@ -1,0 +1,10 @@
+--- CMakeLists.txt.orig	2024-02-27 20:31:25.391767065 +0800
++++ CMakeLists.txt	2024-02-27 20:33:00.683505985 +0800
+@@ -41,6 +41,7 @@
+   "${CMAKE_CURRENT_SOURCE_DIR}/build/fbcode_builder/CMake"
+   ${CMAKE_MODULE_PATH})
+ 
++add_compile_definitions(GLOG_USE_GLOG_EXPORT)
+ find_package(Glog MODULE REQUIRED)
+ include_directories(${GLOG_INCLUDE_DIR})
+ 

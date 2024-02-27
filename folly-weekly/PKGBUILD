@@ -5,21 +5,33 @@
 
 _pkgname=folly
 pkgname=${_pkgname}-weekly
-pkgver=2024.02.12.00
-pkgrel=2
+pkgver=2024.02.26.00
+pkgrel=1
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=("x86_64")
 url="https://github.com/facebook/folly"
 license=("Apache")
-depends=("snappy" "jemalloc" "double-conversion" "gflags" "google-glog" "libevent"
+depends=("snappy" "jemalloc" "double-conversion" "gflags" "google-glog=0.7.0" "libevent"
          "boost-libs=1.83.0" "fmt" "openssl>=3.0" "zlib" "bzip2" "xz" "lz4" "zstd" "libsodium"
          "libdwarf" "libaio" "liburing" "libunwind")
 makedepends=("boost=1.83.0" "cmake" "gtest" "gmock")
 conflicts=("folly")
 provides=("folly")
-source=("$url/archive/v${pkgver}.tar.gz")
-b2sums=('ff4b7ff3934b17543188ee554dad10a8c28d05ebd8b06d33fac9b7a644587ac0437f8315e3fa03b194914f0f9224ba395a9f60da5fab0196cc8cac177734a1c0')
+source=(
+  "$url/archive/v${pkgver}.tar.gz"
+  "fix-glog-0.7.patch"
+  "fix-elf-include-unistd-h.patch"
+)
+b2sums=('56e7f1c4a877c02d483e8e52a6d36afe8094f4bfa1fc4ee9c8f427fc51427cec978c3c29c0156aa1625f0db35800fc40903e96ac603d276edf9612bafbc327a6'
+        '2ce6ee61da7cd68e394bc3795c3eab9d1cb6616000c27f3c4c5a507eeab187774b72b74994c794b6f70cff17f2ca037ff6cb950fd2e3dc8c84adbe0ab1f21e25'
+        'a743e3b0ea56027b9342112f9be2222500f6f53af201cacbc4f62f696edc44ec4e6aa9360ad3471c5c071c0a050ea8f5bbc9c4aeff0047387a21a767e40956a1')
 options=(!lto)
+
+prepare() {
+  cd "$_pkgname-$pkgver"
+  patch CMakeLists.txt < ../fix-glog-0.7.patch
+  patch folly/experimental/symbolizer/Elf.cpp < ../fix-elf-include-unistd-h.patch
+}
 
 build() {
   cd "$_pkgname-$pkgver"

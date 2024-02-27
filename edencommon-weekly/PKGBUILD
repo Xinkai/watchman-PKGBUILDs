@@ -2,8 +2,8 @@
 
 _pkgname=edencommon
 pkgname=${_pkgname}-weekly
-pkgver=2024.02.12.00
-pkgrel=2
+pkgver=2024.02.26.00
+pkgrel=1
 pkgdesc="A shared library for Meta's source control filesystem tools (EdenFS and Watchman)"
 arch=("x86_64")
 url="https://github.com/facebookexperimental/edencommon"
@@ -12,9 +12,18 @@ depends=("folly-weekly")
 makedepends=("boost=1.83.0" "cmake" "gmock" "folly-weekly")
 conflicts=("edencommon")
 provides=("edencommon")
-source=("${url}/archive/v${pkgver}.tar.gz")
-b2sums=('c834846b4c3b6d096ffea5db725486abde84943eb46e66ccdfc7462f1e5f57a0c9158b99d1188ba24d87bb3819d35073b07c123ade7ced0334332e3a55dac625')
+source=(
+    "${url}/archive/v${pkgver}.tar.gz"
+    "fix-glog-0.7.patch"
+)
+b2sums=('8d21ec100619ed6564b63e942e24113344ac99ebb1fbf083ec5a98783bf7dffe751102c1c90f62ba6ac315ed4283d6ecf72d6946051fc65a64b477d3b0a190e9'
+        '160a128cfa4e0317f6ea22af005ea225fb594043b415257a4f7001494b7744e1b4f367f721cc84bffd9888718b2ab6ee231a8c4d321461dd85231c76f745e711')
 options=(!lto)
+
+prepare() {
+    cd "$_pkgname-$pkgver"
+    patch CMakeLists.txt < ../fix-glog-0.7.patch
+}
 
 build() {
     cd "$_pkgname-$pkgver"

@@ -1,0 +1,10 @@
+--- Elf.cpp.orig	2024-02-27 20:26:27.825953697 +0800
++++ Elf.cpp	2024-02-27 20:26:32.302965755 +0800
+@@ -17,6 +17,7 @@
+ #include <folly/experimental/symbolizer/Elf.h>
+ 
+ #include <fcntl.h>
++#include <unistd.h>
+ #include <sys/stat.h>
+ #include <sys/types.h>
+ #include <cstring>
