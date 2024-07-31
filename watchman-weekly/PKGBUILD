@@ -3,13 +3,13 @@
 _pkgname=watchman
 pkgname=${_pkgname}-weekly
 pkgver=2024.02.26.00
-pkgrel=1
+pkgrel=2
 pkgdesc="Watches files and records, or triggers actions, when they change."
 arch=("x86_64")
 url="https://github.com/facebook/watchman"
 license=("Apache")
-depends=("google-glog=0.7.0" "boost-libs=1.83.0" "fmt" "double-conversion" "libunwind" "openssl>=3.0")
-makedepends=("boost=1.83.0" "cmake" "gtest" "gmock" "python" "rust"
+depends=("google-glog=0.7.1" "boost-libs=1.83.0" "fmt" "double-conversion" "libunwind" "openssl>=3.0")
+makedepends=("boost=1.83.0" "cmake" "gtest" "gmock" "python" "python-setuptools" "rust"
     "folly-weekly" "edencommon-weekly"
 )
 conflicts=("watchman" "watchman-git" "watchman-bin" "python-watchman")
@@ -18,16 +18,21 @@ source=(
     "${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "https://src.fedoraproject.org/rpms/watchman/raw/a446ccc61c73d74053792656c3832f93bf0fe262/f/watchman-destdir.patch"
     "fix-glog-0.7.patch"
+    "fix-dead-code.patch"
 )
-b2sums=('4a29f8a0d85b5eae39f24f81861a019c1e10c5d15fde4ea275f4f6ada2c7c767a3551a1cfe53d991fa46f4d261ffa5f7d90422bda5a15415f86d836e3e361b55'
-        '1b1d61640c5544b3b615090c2d5f9cf1c99b101eceffde8bb622b5ab4bdb9c37fbfcf779055407ad3da26c1be58a6b973fbff9583b35cc8a71164a0486801b06'
-        '51233fef8346fb4980587ed7647e06c6d459b82a8496911a8684ed43a9d5591eb1b228730316f969a3122bdce7269c82655e2b0aaea5dc63ce8524eb07f2c4eb')
+b2sums=(
+    '4a29f8a0d85b5eae39f24f81861a019c1e10c5d15fde4ea275f4f6ada2c7c767a3551a1cfe53d991fa46f4d261ffa5f7d90422bda5a15415f86d836e3e361b55'
+    '1b1d61640c5544b3b615090c2d5f9cf1c99b101eceffde8bb622b5ab4bdb9c37fbfcf779055407ad3da26c1be58a6b973fbff9583b35cc8a71164a0486801b06'
+    '51233fef8346fb4980587ed7647e06c6d459b82a8496911a8684ed43a9d5591eb1b228730316f969a3122bdce7269c82655e2b0aaea5dc63ce8524eb07f2c4eb'
+    '60171883cf170223d169c0924facd8a9f3a7f9c6ee4a331af8dd44600523b84029c76019ea96d6769282ca559a844c2c3a504496248dee6a34c86c46af2f9b08'
+)
 
 
 prepare() {
     cd "$_pkgname-$pkgver"
     patch --ignore-whitespace --fuzz=3 --input="../watchman-destdir.patch"
     patch CMakeLists.txt < ../fix-glog-0.7.patch
+    patch watchman/rust/watchman_client/src/lib.rs < ../fix-dead-code.patch
 }
 
 build() {

@@ -6,12 +6,12 @@
 _pkgname=folly
 pkgname=${_pkgname}-weekly
 pkgver=2024.02.26.00
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=("x86_64")
 url="https://github.com/facebook/folly"
 license=("Apache")
-depends=("snappy" "jemalloc" "double-conversion" "gflags" "google-glog=0.7.0" "libevent"
+depends=("snappy" "jemalloc" "double-conversion" "gflags" "google-glog=0.7.1" "libevent"
          "boost-libs=1.83.0" "fmt" "openssl>=3.0" "zlib" "bzip2" "xz" "lz4" "zstd" "libsodium"
          "libdwarf" "libaio" "liburing" "libunwind")
 makedepends=("boost=1.83.0" "cmake" "gtest" "gmock")
@@ -23,7 +23,7 @@ source=(
   "fix-elf-include-unistd-h.patch"
 )
 b2sums=('56e7f1c4a877c02d483e8e52a6d36afe8094f4bfa1fc4ee9c8f427fc51427cec978c3c29c0156aa1625f0db35800fc40903e96ac603d276edf9612bafbc327a6'
-        '2ce6ee61da7cd68e394bc3795c3eab9d1cb6616000c27f3c4c5a507eeab187774b72b74994c794b6f70cff17f2ca037ff6cb950fd2e3dc8c84adbe0ab1f21e25'
+        '961c17f69d724f3970ea719f88fc4efb0e77304fa5dee5697c0bea42ede1e2fa58bda8ad7c3c344ecb7a0c2d3893674edfe3a5b446880c4b049f1752eb63f0d5'
         'a743e3b0ea56027b9342112f9be2222500f6f53af201cacbc4f62f696edc44ec4e6aa9360ad3471c5c071c0a050ea8f5bbc9c4aeff0047387a21a767e40956a1')
 options=(!lto)
 
