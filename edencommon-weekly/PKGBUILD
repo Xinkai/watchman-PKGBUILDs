@@ -3,13 +3,13 @@
 _pkgname=edencommon
 pkgname=${_pkgname}-weekly
 pkgver=2024.02.26.00
-pkgrel=2
+pkgrel=3
 pkgdesc="A shared library for Meta's source control filesystem tools (EdenFS and Watchman)"
 arch=("x86_64")
 url="https://github.com/facebookexperimental/edencommon"
 license=("Apache")
 depends=("folly-weekly")
-makedepends=("boost=1.83.0" "cmake" "gmock" "folly-weekly")
+makedepends=("boost=1.86.0" "cmake" "gmock" "folly-weekly")
 conflicts=("edencommon")
 provides=("edencommon")
 source=(
