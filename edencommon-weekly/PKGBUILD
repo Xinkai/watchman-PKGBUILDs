@@ -3,7 +3,7 @@
 _pkgname=edencommon
 pkgname=${_pkgname}-weekly
 pkgver=2024.02.26.00
-pkgrel=3
+pkgrel=4
 pkgdesc="A shared library for Meta's source control filesystem tools (EdenFS and Watchman)"
 arch=("x86_64")
 url="https://github.com/facebookexperimental/edencommon"
